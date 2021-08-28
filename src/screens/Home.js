@@ -2,12 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
-  TextInput,
-  TouchableHighlight,
   SafeAreaView,
-  View,
 } from 'react-native';
-import {useLazyQuery, useMutation} from '@apollo/client';
+import {useLazyQuery} from '@apollo/client';
 
 import RestaurantList from '../components/RestaurantList';
 import CreateRestaurant from '../components/CreateRestaurant';

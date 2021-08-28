@@ -15,16 +15,13 @@ export default function Login({navigation}) {
   const onLoginPress = () => {
     auth()
       .signInWithEmailAndPassword(
-        'jane.doe@example.com',
-        'SuperSecretPassword!',
+        email,
+        password
       )
       .then(() => {
-        console.log('User account created & signed in!');
+        console.log('User account signed in!');
       })
       .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
 
         if (error.code === 'auth/invalid-email') {
           console.log('That email address is invalid!');

@@ -17,8 +17,6 @@ import {
 
 import {setContext} from '@apollo/client/link/context';
 
-import AsyncStorage from '@react-native-community/async-storage';
-
 const App = () => {
   // const [tokenState, setTokenState] = useState();
   const BASE_URI = 'http://localhost:3000/graphql';
@@ -37,8 +35,9 @@ const App = () => {
   });
 
   async function onAuthStateChanged(user) {
+    setUser(user);
     if (user) {
-      setUser(user);
+
       const token = await user?.getIdToken();
       console.log('Get token successfull.');
       const authLink = setContext((_, {headers}) => {
@@ -63,14 +62,6 @@ const App = () => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   }, []);
-
-  // useEffect(() => {
-  //   AsyncStorage.getItem('token', (err, token) => {
-  //     if (token) {
-  //       setTokenState(token);
-  //     }
-  //   });
-  // }, []);
 
   const Stack = createNativeStackNavigator();
 
